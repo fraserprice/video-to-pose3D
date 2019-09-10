@@ -163,6 +163,6 @@ def inference_video(video_path, detector_2d):
 
 
 if __name__ == '__main__':
-    video = './outputs/test.mp4'
+    video = './outputs/trickshots.mp4'
     split_video(video)
     inference_video(video, 'alpha_pose')
