@@ -66,7 +66,7 @@ def main(args):
     # 2D kpts loads or generate
     if not args.input_npz:
         video_name = args.viz_video
-        print(detector_2d)
+        print(f"DETECTOR: {detector_2d}")
         keypoints = detector_2d(video_name)
     else:
         npz = np.load(args.input_npz)
