@@ -92,7 +92,6 @@ __pycache__/
 *.npz
 *.zip
 *.json
-*.mp4
 *.tar
 *.pth
 *.weights
