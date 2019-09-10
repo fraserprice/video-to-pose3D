@@ -76,6 +76,7 @@ def main(args):
     joints_left, joints_right = list([4, 5, 6, 11, 12, 13]), list([1, 2, 3, 14, 15, 16])
 
     # normlization keypoints  Suppose using the camera parameter
+    print(keypoints)
     keypoints = normalize_screen_coordinates(keypoints[..., :2], w=1000, h=1002)
 
     model_pos = TemporalModel(17, 2, 17, filter_widths=[3, 3, 3, 3, 3], causal=args.causal, dropout=args.dropout, channels=args.channels,
