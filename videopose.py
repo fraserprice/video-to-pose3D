@@ -6,7 +6,7 @@ from common.camera import *
 from common.generators import UnchunkedGenerator
 from common.loss import *
 from common.model import *
-from common.utils import Timer, evaluate, add_path
+from common.utils import Timer, evaluate, add_path, split_video
 
 # from joints_detectors.openpose.main import generate_kpts as open_pose
 
@@ -163,4 +163,6 @@ def inference_video(video_path, detector_2d):
 
 
 if __name__ == '__main__':
-    inference_video('./outputs/kunkun_cut.mp4', 'alpha_pose')
+    video = './outputs/kunkun_cut.mp4'
+    split_video(video)
+    inference_video(video, 'alpha_pose')

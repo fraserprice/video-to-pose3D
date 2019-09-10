@@ -149,6 +149,7 @@ def split_video(video_path):
     total_frames = int(stream.get(cv2.CAP_PROP_FRAME_COUNT))
     length = len(str(total_frames)) + 1
 
+    save_path = ''
     i = 1
     while True:
         grabbed, frame = stream.read()
