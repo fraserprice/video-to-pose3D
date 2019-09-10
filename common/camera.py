@@ -13,6 +13,7 @@ from common.utils import wrap
 
 
 def normalize_screen_coordinates(X, w, h):
+    print(X)
     assert X.shape[-1] == 2
 
     # Normalize so that [0, w] is mapped to [-1, 1], while preserving the aspect ratio
