@@ -58,7 +58,7 @@ def handle_video(video_file):
     #     raise IOError('Error: must contain --video')
 
     if len(img_path) and img_path != '/':
-        print(os.listdir(img_path))
+        print(os.walk(img_path))
         for root, dirs, files in os.walk(img_path):
             im_names = sorted([f for f in files if 'png' in f or 'jpg' in f])
     else:
