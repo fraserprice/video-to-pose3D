@@ -57,9 +57,10 @@ def handle_video(video_file):
     # if not len(video_file):
     #     raise IOError('Error: must contain --video')
 
+    im_names = []
     if len(img_path) and img_path != '/':
         for root, dirs, files in os.walk(img_path):
-            im_names = sorted([f for f in files if 'png' in f or 'jpg' in f])
+            im_names += sorted([f for f in files if 'png' in f or 'jpg' in f])
     else:
         raise IOError('Error: must contain either --indir/--list')
 
@@ -158,12 +159,14 @@ def handle_video(video_file):
             # TQDM
             im_names_desc.set_description(
                 'det time: {dt:.4f} | pose time: {pt:.4f} | post processing: {pn:.4f}'.format(
-                    dt=np.mean(runtime_profile['dt']), pt=np.mean(runtime_profile['pt']), pn=np.mean(runtime_profile['pn']))
+                    dt=np.mean(runtime_profile['dt']), pt=np.mean(runtime_profile['pt']),
+                    pn=np.mean(runtime_profile['pn']))
             )
 
     if (args.save_img or args.save_video) and not args.vis_fast:
         print('===========================> Rendering remaining images in the queue...')
-        print('===========================> If this step takes too long, you can enable the --vis_fast flag to use fast rendering (real-time).')
+        print(
+            '===========================> If this step takes too long, you can enable the --vis_fast flag to use fast rendering (real-time).')
     while writer.running():
         pass
     writer.stop()
@@ -172,7 +175,9 @@ def handle_video(video_file):
 
     kpts = []
     for i in range(len(final_result)):
-        kpt = max(final_result[i]['result'], key=lambda x: x['proposal_score'].data[0] * calculate_area(x['keypoints']))['keypoints']
+        kpt = \
+        max(final_result[i]['result'], key=lambda x: x['proposal_score'].data[0] * calculate_area(x['keypoints']))[
+            'keypoints']
         kpts.append(kpt.data.numpy())
 
     name = f'{args.outputpath}/{video_name}.npz'
@@ -183,9 +188,9 @@ def handle_video(video_file):
     return kpts
 
 
-if __name__ == "__main__":
-    os.chdir('../..')
-    print(os.getcwd())
-
-    # handle_video(img_path='outputs/image/kobe')
-    handle_video('outputs/dance.mp4')
+# if __name__ == "__main__":
+#     os.chdir('../..')
+#     print(os.getcwd())
+#
+#     # handle_video(img_path='outputs/image/kobe')
+#     handle_video('outputs/dance.mp4')

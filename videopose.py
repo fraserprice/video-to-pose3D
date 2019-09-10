@@ -161,4 +161,4 @@ def inference_video(video_path, detector_2d):
 
 
 if __name__ == '__main__':
-    inference_video('outputs/dance.mp4', 'alpha_pose')
+    inference_video('outputs/kunkun_cut.mp4', 'alpha_pose')
