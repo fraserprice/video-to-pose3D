@@ -60,13 +60,13 @@ class Skeleton:
 
 def main(args):
     detector_2d = get_detector_2d(args.detector_2d)
+    print(f"DETECTOR: {detector_2d}")
 
     assert detector_2d, 'detector_2d should be in ({alpha, hr, open}_pose)'
 
     # 2D kpts loads or generate
     if not args.input_npz:
         video_name = args.viz_video
-        print(f"DETECTOR: {detector_2d}")
         keypoints = detector_2d(video_name)
     else:
         npz = np.load(args.input_npz)
