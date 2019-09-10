@@ -66,6 +66,7 @@ def main(args):
     # 2D kpts loads or generate
     if not args.input_npz:
         video_name = args.viz_video
+        print(detector_2d)
         keypoints = detector_2d(video_name)
     else:
         npz = np.load(args.input_npz)
@@ -162,4 +163,4 @@ def inference_video(video_path, detector_2d):
 
 
 if __name__ == '__main__':
-    inference_video('outputs/kunkun_cut.mp4', 'alpha_pose')
+    inference_video('./outputs/kunkun_cut.mp4', 'alpha_pose')
